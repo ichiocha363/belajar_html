@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form to do">
+        <label for=""></label>
+        <input type="text" id="task"><br>;
+        <label for="kategory"></label>
+        <input type="text" id="kategory"><br>;
+        <button type ="submit" id="tambah">simpan</button>;
+    </form>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>task</th>
+                <th>kategory</th>
+                <th>aksi</th>
+            </tr>
+        </thead>
+        <tbody id="todo-list">
+    </table>
+    <script>
+        const form = document.querySelector("form to do");
+        const inputTask = document.querySelector("#task");
+        const kategory = document.querySelector("#kategory");
+        
+        formtodo,addEventListener("submit", function(e){
+            e.preventDefault();
+            const tugastext = task.value;
+            const kategoryText = kategory.value().trim();
+            alert("muncul")
+        })
+    </script>
+</body>
+</html>
