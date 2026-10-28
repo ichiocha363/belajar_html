@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KasirKu - Daftar Produk</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
-    />
+    /> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- <script src="js/script.js"></script> -->
   </head>
   <body>
@@ -144,7 +146,7 @@
               <th>AKSI</th>
             </tr>
           </thead>
-          <tbody id="table-produk-body">
+          <tbody>
             <tr>
               <td><input type="checkbox" /></td>
               <td>
@@ -203,89 +205,7 @@
         </table>
       </div>
     </main>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const tbody = document.querySelector("#table-produk-body");
-        const dataTersimpan =
-          JSON.parse(localStorage.getItem("dataFormProduk")) || [];
-        // console.log(dataTersimpan);
 
-        function tambahCell(tr, konten) {
-          const td = document.createElement("td");
-          if (typeof konten === "string") {
-            td.textContent = konten;
-          } else {
-            td.append(konten);
-          }
-          tr.append(td);
-        }
-
-        dataTersimpan.forEach((item) => {
-          const tr = document.createElement("tr");
-          const chkbox = document.createElement("input");
-          chkbox.type = "checkbox";
-          tambahCell(tr, chkbox);
-
-          // Nama Produk & kode produk
-          const divNama = document.createElement("div");
-          divNama.innerHTML = `<strong>${item.nm_produk}</strong><br /><small style="color:gray">SKU: ${item.barcode_produk}</small>`;
-          tambahCell(tr, divNama);
-
-          // kategori
-          const divkategori = document.createElement("div");
-          divkategori.innerhtml = `<strong><br><small style="color:gray">Per ${item.satuan_produk}(${item.batas_min_produk})</small>`;
-          tambahCell(tr, divkategori);
-
-          //harga
-          const harga = Number(item.harga_jual_produk || 0);
-          const strongHarga = document.createElement("strong");
-          strongHarga.textContent = `Rp ${harga.toLocaleString("id-ID")}`;
-          tambahCell(tr, strongHarga);
-
-          //stock
-          const strongStock = document.createElement("strong");
-          strongStock.textContent = item.stok_awal_produk || 0;
-          tambahCell(tr, strongStock);
-
-          //status
-          const badge = document.createElement("span");
-          badge.className = "badge badge-succes";
-          badge.textContent =
-            item.stok_awal_produk <= 0 ? "Tersedia" : "Tersedia";
-          tambahCell(tr, badge);
-
-          const divAksi = document.createElement("div");
-          divAksi.innerHTML = `<button class="btn-remove" data-id="${item.id}
-          " style="
-                    background-color: rgb(247, 35, 35);
-                    padding: 10px;
-                    border-radius: 8px;
-                    color: #fee2e2;
-                    border: none;
-                  "><i class="bi bi-x-circle-fill"></i>delete</button>`;
-          tambahCell(tr, divAksi);
-
-          tbody.append(tr);
-        });
-        tbody.addEventListener("click", function (e) {
-          const btnDelete = e.target.closest(".btn-remove");
-          if (btnDelete) {
-            const idData = Number(btnDelete.getAttribute("data-id"));
-            if (confirm("Apakah anda yakin ingin menghapus ?")) {
-              let dataAktif =
-                JSON.parse(localStorage.getItem("dataFormProduk")) || [];
-
-              // filter
-              dataAktif = dataAktif.filter((item) => item.id !== idData);
-
-              localStorage.setItem("dataFormProduk", JSON.stringify(dataAktif));
-
-              btnDelete.closest("tr").remove();
-            }
-          }
-        });
-      });
-    </script>
     <footer>
       <div>KasirKu POS Warung • Versi 2.4.0 (Kilat Retail UMKM)</div>
       <div>Bantuan Cepat: 0812-3456-7890 | Status Mesin Kasir: Normal</div>

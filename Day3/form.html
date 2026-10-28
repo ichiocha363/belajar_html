@@ -6,36 +6,65 @@
     <title>Document</title>
 </head>
 <body>
-    <form id="form to do">
-        <label for=""></label>
-        <input type="text" id="task"><br>;
-        <label for="kategory"></label>
-        <input type="text" id="kategory"><br>;
-        <button type ="submit" id="tambah">simpan</button>;
+    <form action="" id="form-todo">
+        <div>
+            <label for="">Tugas</label>
+            <input type="text" id="task" value=""><br />
+            <label for="">Kategori</label>
+            <input type="text" id="kategori" value="" />
+            <button type="submit" id="tambah">Simpan</button>
     </form>
-    
-    <table>
+    <table border = "1" >
         <thead>
             <tr>
-                <th>id</th>
-                <th>task</th>
-                <th>kategory</th>
-                <th>aksi</th>
+                <th>No</th>
+                <th>Tugas</th>
+                <th>Kategori</th>
+                <th>Aksi</th>
             </tr>
         </thead>
-        <tbody id="todo-list">
+        <tbody id="table-tugas"></tbody>
     </table>
     <script>
-        const form = document.querySelector("form to do");
-        const inputTask = document.querySelector("#task");
-        const kategory = document.querySelector("#kategory");
+        const formtodo = document.querySelector("#form-todo");
+        const task = document.querySelector("#task");
+        const kategori = document.querySelector("#kategori");
+        const tableTugas = document.querySelector("#table-tugas");
+        let nomor = 1;
         
-        formtodo,addEventListener("submit", function(e){
+        formtodo.addEventListener("submit", function(e) {
             e.preventDefault();
-            const tugastext = task.value;
-            const kategoryText = kategory.value().trim();
-            alert("muncul")
-        })
+            const TugasText = task.value.trim();
+            const KategoriText = kategori.value.trim();
+
+           //alert("MUNCULLLL", TugasText, KategoriText);
+           let tr = document.createElement("tr");
+           const noUrut = document.createElement("td");
+           noUrut.textContent = nomor++;
+           tr.appendChild(noUrut);  
+           tableTugas.appendChild(tr);
+           const tugasShow = document.createElement("td");
+              tugasShow.textContent = TugasText;
+           tr.appendChild(tugasShow);
+           const kategoriShow = document.createElement("td");
+              kategoriShow.textContent = KategoriText;
+           tr.appendChild(kategoriShow);
+           const btnShow = document.createElement("td");
+           const btnDelete = document.createElement("button");
+              btnDelete.textContent = "Hapus";
+              btnDelete.className = "btn-remove";
+              btnShow.appendChild(btnDelete);
+              tr.appendChild(btnShow);
+              formtodo.reset();
+        });
+
+        tableTugas.addEventListener("click", function(e) {
+            if (e.target.classList.contains("btn-remove")) {
+                const tr = e.target.parentElement.parentElement;
+                tr.remove();
+            }
+        });
     </script>
+        </tbody>
 </body>
 </html>
