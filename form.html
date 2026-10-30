@@ -3,26 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KasirKu - Daftar Produk</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>KasirKu - Form Tambah Produk</title>
+    <link rel="stylesheet" href="style.css" />
     <!-- <link
       rel="stylesheet"
       href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
     /> -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <!-- <script src="js/script.js"></script> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+      integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <header>
       <div class="brand">
         <span>KasirKu</span>
-        <span class="status-badge"> Toko Berkah Warung - Buka</span>
+        <span class="status-badge">• Toko Berkah Warung - Buka</span>
       </div>
       <nav class="main-nav">
         <a href="">Kasir Transaksi</a>
-        <a href="index.html" class="active">Daftar Produk</a>
-        <a href="form.html">Tambah Produk</a>
+        <a href="index.html">Daftar Produk</a>
+        <a href="form.html" class="active">Tambah Produk</a>
       </nav>
       <div class="nav-user">
         <div class="user-profile">
@@ -42,255 +46,216 @@
     <main class="container">
       <div class="page-header">
         <div>
-          <div class="sub-breadcrumb">MANAJEMEN WARUNG / KATALOG & GUDANG</div>
-          <h1>Daftar Produk & Stok Toko</h1>
+          <div class="sub-breadcrumb">← Daftar Produk / TAMBAH PRODUK BARU</div>
+          <h1>Formulir Tambah Produk Warung</h1>
           <p style="color: var(--warna-teks-muted)">
-            Kelola ketersediaan barang, kontrol harga jual, dan pantau
-            peringatan habis barang secara instan.
+            Lengkapi data barang dagangan dengan teliti agar margin keuntungan
+            terhitung akurat.
           </p>
         </div>
-        <div style="display: flex; gap: 12px">
-          <button class="btn-secondary">
-            <i class="bi bi-cloud-arrow-down badge-success"></i> Unduh Laporan
-          </button>
-          <a href="form.html" class="btn-primary">+ Tambah Produk</a>
-        </div>
       </div>
 
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div>
-            <small style="color: var(--warna-teks-muted)"
-              >Total Produk Terdaftar</small
-            >
-            <div class="stat-number">
-              48
-              <small style="font-size: 14px; font-weight: normal"
-                >item SKU</small
-              >
+      <div class="grid-2col">
+        <form action="#" method="POST" id="form-produk">
+          <!-- Seksi 1 -->
+          <div
+            style="
+              background: white;
+              padding: 20px;
+              border-radius: var(--radius-lg);
+              border: 1px solid var(--warna-border);
+              margin-bottom: 20px;
+            "
+          >
+            <h3 style="margin-bottom: 16px">1. Informasi Pokok Barang</h3>
+
+            <div style="margin-bottom: 16px">
+              <label for="">Nama Produk Warung</label>
+              <input type="text" value="" id="nama_produk" />
             </div>
-            <small style="color: var(--warna-sukses)"
-              >✓ 100% tersinkron POS</small
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+                margin-bottom: 16px;
+              "
             >
-          </div>
-          <div class="stat-icon-bg">
-            <i class="bi bi-boxes badge-warning"></i>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div>
-            <small style="color: var(--warna-teks-muted)"
-              >Perlu Restock Segera</small
-            >
-            <div class="stat-number" style="color: var(--warna-danger)">
-              4
-              <small
-                style="
-                  font-size: 14px;
-                  font-weight: normal;
-                  color: var(--warna-danger);
-                "
-                >item butuh perhatian</small
-              >
+              <div>
+                <label for="">Kategori Produk</label>
+                <select id="kategori">
+                  <option value="Sembako (Minyak, Beras, Gula)">
+                    Sembako (Minyak, Beras, Gula)
+                  </option>
+                  <option value="Makanan Ringan">Makanan Ringan</option>
+                </select>
+              </div>
+              <div>
+                <label for="">Satuan Eceran</label>
+                <input type="text" value="" id="satuan" />
+              </div>
             </div>
-            <small style="color: var(--warna-teks-muted)"
-              >• 1 produk habis total</small
+
+            <div>
+              <label for="">Kode Barcode / SKU (Opsional)</label>
+              <input type="text" value="" id="barcode" />
+            </div>
+          </div>
+
+          <!-- Seksi 2 -->
+          <div
+            style="
+              background: white;
+              padding: 20px;
+              border-radius: var(--radius-lg);
+              border: 1px solid var(--warna-border);
+              margin-bottom: 20px;
+            "
+          >
+            <h3 style="margin-bottom: 16px">2. Harga & Margin Laba</h3>
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px"
             >
+              <div>
+                <label for="">Harga Modal / Beli (Rp)</label>
+                <input type="number" value="" id="harga_beli" />
+              </div>
+              <div>
+                <label for="">Harga Jual Kasir (Rp)</label>
+                <input type="number" value="" id="harga_jual" />
+              </div>
+            </div>
           </div>
-          <div class="stat-icon-bg" style="background-color: #fee2e2">
-            <i class="bi bi-triangle badge-warning"></i>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div>
-            <small style="color: var(--warna-teks-muted)"
-              >Estimasi Nilai Inventaris</small
+
+          <!-- Seksi 3 -->
+          <div
+            style="
+              background: white;
+              padding: 20px;
+              border-radius: var(--radius-lg);
+              border: 1px solid var(--warna-border);
+              margin-bottom: 20px;
+            "
+          >
+            <h3 style="margin-bottom: 16px">3. Manajemen Stok & Peringatan</h3>
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px"
             >
-            <div class="stat-number">Rp 8.450.000</div>
-            <small style="color: var(--warna-teks-muted)"
-              >📈 Modal berputar di etalase</small
-            >
+              <div>
+                <label for="">Jumlah Stok Awal Saat Ini</label>
+                <input type="number" value="" id="stok_awal" />
+              </div>
+              <div>
+                <label for="">Batas Minimum Stok</label>
+                <input type="number" value="5" id="batas_min" />
+              </div>
+            </div>
           </div>
-          <div class="stat-icon-bg" style="background-color: #fef3c7">
-            <i class="bi bi-cash-coin badge-success"></i>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px">
+            <button type="button" class="btn-secondary">Batal</button>
+            <button type="submit" class="btn-primary">
+              <i class="bi bi-floppy"></i> Simpan Produk
+            </button>
           </div>
-        </div>
-      </div>
+        </form>
+        <script>
+          const form = document.querySelector("#form-produk");
+          const nama_produk = document.querySelector("#nama_produk");
+          const kategori = document.querySelector("#kategori");
+          const satuan = document.querySelector("#satuan");
+          const barcode = document.querySelector("#barcode");
+          const harga_beli = document.querySelector("#harga_beli");
+          const harga_jual = document.querySelector("#harga_jual");
+          const stok_awal = document.querySelector("#stok_awal");
+          const batas_min_stok = document.querySelector("#batas_min");
 
-      <div class="table-container">
-        <div
-          style="
-            padding: 16px;
-            border-bottom: 1px solid var(--warna-border);
-            display: flex;
-            gap: 12px;
-          "
-        >
-          <input
-            type="text"
-            placeholder="Cari produk warung, barcode, atau kategori..."
-            style="flex: 1"
-          />
-          <button class="btn-secondary">Sortir: Stok</button>
-        </div>
-
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th><input type="checkbox" /></th>
-              <th>NAMA PRODUK</th>
-              <th>KATEGORI / SATUAN</th>
-              <th>HARGA JUAL</th>
-              <th>STOK</th>
-              <th>STATUS KETERSEDIAAN</th>
-              <th>AKSI</th>
-            </tr>
-          </thead>
-          <tbody id="table-produk-body">
-            <tr>
-              <td><input type="checkbox" /></td>
-              <td>
-                <div style="display: flex; gap: 12px; align-items: center">
-                  <img
-                    src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=80"
-                    style="
-                      width: 40px;
-                      height: 40px;
-                      border-radius: 6px;
-                      object-fit: cover;
-                    "
-                  />
-                  <div>
-                    <strong>Beras Ramos 5kg</strong><br /><small
-                      style="color: var(--warna-teks-muted)"
-                      >SKU: BR-RAMOS-05</small
-                    >
-                  </div>
-                </div>
-              </td>
-              <td>
-                Sembako<br /><small style="color: var(--warna-teks-muted)"
-                  >Per Karung (5kg)</small
-                >
-              </td>
-              <td><strong>Rp 72.000</strong></td>
-              <td><strong>15</strong></td>
-              <td><span class="badge badge-success">● Tersedia</span></td>
-              <td>
-                <button
-                  style="
-                    background-color: rgb(3, 158, 3);
-                    padding: 10px;
-                    border-radius: 8px;
-                    color: #fee2e2;
-                    border: none;
-                  "
-                >
-                  <i class="bi bi-pencil-square"></i> Edit
-                </button>
-                <button
-                  style="
-                    background-color: rgb(247, 35, 35);
-                    padding: 10px;
-                    border-radius: 8px;
-                    color: #fee2e2;
-                    border: none;
-                  "
-                >
-                  <i class="bi bi-x-circle-fill"></i> Delete
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </main>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const tbody = document.querySelector("#table-produk-body");
-        const dataTersimpan =
-          JSON.parse(localStorage.getItem("dataFormProduk")) || [];
-        // console.log(dataTersimpan);
-
-        function tambahCell(tr, konten) {
-          const td = document.createElement("td");
-          if (typeof konten === "string") {
-            td.textContent = konten;
-          } else {
-            td.append(konten);
-          }
-          tr.append(td);
-        }
-
-        dataTersimpan.forEach((item) => {
-          const tr = document.createElement("tr");
-          const chkbox = document.createElement("input");
-          chkbox.type = "checkbox";
-          tambahCell(tr, chkbox);
-
-          // Nama Produk & kode produk
-          const divNama = document.createElement("div");
-          divNama.innerHTML = `<strong>${item.nm_produk}</strong><br /><small style="color:gray">SKU: ${item.barcode_produk}</small>`;
-          tambahCell(tr, divNama);
-
-          // kategori
-          const divkategori = document.createElement("div");
-          divkategori.innerhtml = `<strong><br><small style="color:gray">Per ${item.satuan_produk}(${item.batas_min_produk})</small>`;
-          tambahCell(tr, divkategori);
-
-          //harga
-          const harga = Number(item.harga_jual_produk || 0);
-          const strongHarga = document.createElement("strong");
-          strongHarga.textContent = `Rp ${harga.toLocaleString("id-ID")}`;
-          tambahCell(tr, strongHarga);
-
-          //stock
-          const strongStock = document.createElement("strong");
-          strongStock.textContent = item.stok_awal_produk || 0;
-          tambahCell(tr, strongStock);
-
-          //status
-          const badge = document.createElement("span");
-          badge.className = "badge badge-succes";
-          badge.textContent =
-            item.stok_awal_produk <= 0 ? "Tersedia" : "Tersedia";
-          tambahCell(tr, badge);
-
-          const divAksi = document.createElement("div");
-          divAksi.innerHTML = `<button class="btn-remove" data-id="${item.id}
-          " style="
-                    background-color: rgb(247, 35, 35);
-                    padding: 10px;
-                    border-radius: 8px;
-                    color: #fee2e2;
-                    border: none;
-                  "><i class="bi bi-x-circle-fill"></i>delete</button>`;
-          tambahCell(tr, divAksi);
-
-          tbody.append(tr);
-        });
-        tbody.addEventListener("click", function (e) {
-          const btnDelete = e.target.closest(".btn-remove");
-          if (btnDelete) {
-            const idData = Number(btnDelete.getAttribute("data-id"));
-            if (confirm("Apakah anda yakin ingin menghapus ?")) {
-              let dataAktif =
-                JSON.parse(localStorage.getItem("dataFormProduk")) || [];
-
-              // filter
-              dataAktif = dataAktif.filter((item) => item.id !== idData);
-
-              localStorage.setItem("dataFormProduk", JSON.stringify(dataAktif));
-
-              btnDelete.closest("tr").remove();
+          function validasi(pesan, status) {
+            if (status === "error") {
+              alert("GAGAL ! " + pesan);
+            } else {
+              alert("Berhasil ! " + pesan);
             }
           }
-        });
-      });
-    </script>
+
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            // alert("tessssssssssssss");
+            const nm_produk = nama_produk.value.trim();
+            const kategori_produk = kategori.value;
+            const satuan_produk = satuan.value.trim();
+            const barcode_produk = barcode.value.trim();
+            const harga_beli_produk = parseFloat(harga_beli.value);
+            const harga_jual_produk = parseFloat(harga_jual.value);
+            const stok_awal_produk = parseInt(stok_awal.value);
+            const batas_min_produk = parseInt(batas_min.value);
+
+            if (nm_produk === "" || kategori_produk === "") {
+              validasi("Nama produk tidak boleh kosong", "error");
+              return;
+            }
+            const dataBaru = {
+              id: Date.now(),
+              nm_produk,
+              kategori_produk,
+              satuan_produk,
+              barcode_produk,
+              harga_beli_produk,
+              harga_jual_produk,
+              stok_awal_produk,
+              batas_min_produk,
+            };
+
+            const dataTersimpan =
+              JSON.parse(localStorage.getItem("dataFormProduk")) || [];
+
+            dataTersimpan.push(dataBaru);
+
+            localStorage.setItem(
+              "dataFormProduk",
+              JSON.stringify(dataTersimpan),
+            );
+
+            validasi("Data produk berhasil disimpan", "sukses");
+            form.reset();
+          });
+        </script>
+        <div>
+          <div
+            style="
+              background: white;
+              padding: 20px;
+              border-radius: var(--radius-lg);
+              border: 1px solid var(--warna-border);
+            "
+          >
+            <h3 style="margin-bottom: 12px">
+              <i class="bi bi-circle-fill badge-warning"></i> Pratinjau Live
+              Kartu Kasir
+            </h3>
+            <div class="product-card" style="margin-bottom: 16px">
+              <span class="stock-tag">Stok: 24 Botol</span>
+              <img
+                src="https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?w=400"
+              />
+              <div class="product-card-body">
+                <small style="color: var(--warna-teks-muted)">Sembako</small>
+                <div style="font-weight: 700; font-size: 16px">
+                  Minyak Goreng Sania 2 Liter
+                </div>
+                <div style="font-size: 18px; font-weight: 800; margin-top: 8px">
+                  Rp 37.000
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
     <footer>
       <div>KasirKu POS Warung • Versi 2.4.0 (Kilat Retail UMKM)</div>
-      <div>Bantuan Cepat: 0812-3456-7890 | Status Mesin Kasir: Normal</div>
     </footer>
+    <!-- <script src="js/script.js"></script> -->
   </body>
 </html>

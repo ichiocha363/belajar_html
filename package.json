@@ -1,15 +1,23 @@
 {
-  "name": "belajar_html",
+  "name": "kasirku",
   "version": "1.0.0",
+  "description": "[aaiskuy.github.io/KasirKu](https://aaiskuy.github.io/KasirKu/)",
   "main": "src/index.js",
   "scripts": {
-      "start": "node src/index.js",
-      "dev" : "node --watch src/index.js",
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
+    "start": "node src/index.js",
+    "dev" : "node --watch src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AAISkuy/KasirKu.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
-  "description": ""
+  "bugs": {
+    "url": "https://github.com/AAISkuy/KasirKu/issues"
+  },
+  "homepage": "https://github.com/AAISkuy/KasirKu#readme"
 }

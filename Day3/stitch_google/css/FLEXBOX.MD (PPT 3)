@@ -1,0 +1,298 @@
+/* DIBAWAH INI LANJUTAN DARI FLEXBOX DAN RESPONSIVE*/
+/* ==========================================================
+   1. RESET & MOBILE-FIRST BASE STYLES (Dasar Tampilan HP)
+   ========================================================== */
+* {
+  box-sizing: border-box; /* Flexbox/Responsif: Memastikan padding & border tidak merusak lebar elemen */
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #333;
+  display: flex; /* Flexbox: Mengatur tata letak halaman secara vertikal penuh */
+  flex-direction: column; /* Flexbox: Menyusun elemen utama dari atas ke bawah */
+  min-height: 100vh;
+}
+
+/* ==========================================================
+   2. HEADER & NAVIGASI (Flexbox: Logo Kiri, Menu Kanan)
+   ========================================================== */
+header.navbar {
+  background-color: #222222;
+  color: #ffffff;
+  display: flex; /* Flexbox: Mengatur posisi logo dan menu agar sejajar */
+  flex-direction: column; /* Responsif HP: Disusun ke bawah agar tidak meluber di layar kecil */
+  gap: 12px; /* Flexbox: Memberikan jarak antar elemen di dalam header */
+  padding: 15px 20px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fcae1e;
+}
+
+nav.nav-links {
+  display: flex; /* Flexbox: Menyusun daftar menu navigasi */
+  gap: 15px; /* Flexbox: Memberikan jarak antar link menu */
+  flex-wrap: wrap; /* Responsif: Menu otomatis turun ke baris baru jika layar terlalu sempit */
+}
+
+nav.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+nav.nav-links a:hover {
+  color: #fcae1e;
+}
+
+/* ==========================================================
+   3. CONTAINER UTAMA & FORM (Flexbox Column & Gap)
+   ========================================================== */
+main.container {
+  max-width: 900px;
+  width: 100%;
+  margin: 30px auto;
+  padding: 0 20px;
+  flex: 1;
+}
+
+.title {
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  color: #111;
+}
+
+/* Layout Form di HP: Kolom tunggal ke bawah */
+.form-row {
+  display: flex; /* Flexbox: Mengatur baris form */
+  flex-direction: column; /* Responsif HP: Form disusun vertikal ke bawah agar tidak meluber */
+  gap: 20px; /* Flexbox: Jarak antar elemen form */
+  margin-bottom: 20px;
+}
+
+/* Section Input */
+section.form-group {
+  flex: 1;
+  display: flex; /* Flexbox: Menyusun label dan input secara vertikal */
+  flex-direction: column; /* Flexbox: Label di atas, input di bawah */
+}
+
+section.form-group label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+section.form-group input {
+  padding: 12px 15px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  outline: none;
+  width: 100%; /* Responsif: Lebar penuh mengikuti layar HP */
+  transition: border-color 0.2s;
+}
+
+section.form-group input:focus {
+  border-color: #fcae1e;
+  background-color: #fff;
+}
+
+/* Alignment Tombol Simpan */
+.button-wrapper {
+  display: flex; /* Flexbox: Mengatur posisi tombol */
+  justify-content: flex-end; /* Flexbox: Meletakkan tombol di sebelah kanan */
+  margin-bottom: 25px;
+}
+
+.btn-simpan {
+  background-color: #ffc107;
+  color: #000;
+  border: 2px solid #000;
+  font-weight: bold;
+  padding: 10px 45px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%; /* Responsif HP: Tombol full-width agar mudah ditekan di HP */
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+}
+
+.btn-simpan:hover {
+  background-color: #e0a800;
+}
+
+.btn-simpan:active {
+  transform: scale(0.98);
+}
+
+/* Notifikasi Sukses */
+.alert-success {
+  background-color: #e8f5e9;
+  border: 2px solid #2e7d32;
+  color: #1b5e20;
+  padding: 15px 20px;
+  border-radius: 10px;
+  display: flex; /* Flexbox: Menyusun ikon dan teks notifikasi agar sejajar */
+  align-items: center; /* Flexbox: Posisi vertikal di tengah */
+  gap: 10px; /* Flexbox: Jarak antara ikon dan teks */
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.alert-success .icon {
+  font-size: 1.1rem;
+}
+
+/* Footer Semantik */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #f4f4f4;
+  border-top: 1px solid #ddd;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* ==========================================================
+   4. MEDIA QUERY UNTUK LAPTOP / DESKTOP (min-width: 768px)
+   ========================================================== */
+@media (min-width: 768px) {
+  /* Header & Navigasi Laptop: Logo di kiri, Menu di kanan secara horizontal */
+  header.navbar {
+    flex-direction: row; /* Mengubah arah flexbox menjadi horizontal */
+    justify-content: space-between; /* Memberikan jarak maksimal antara logo dan menu */
+    padding: 15px 40px;
+  }
+
+  /* Form Laptop: Mengembalikan susunan 2 kolom berdampingan */
+  .form-row {
+    flex-direction: row; /* Mengubah arah form menjadi menyamping */
+    gap: 25px;
+  }
+
+  /* Tombol Simpan Laptop: Mengembalikan ukuran tombol pas di kanan */
+  .btn-simpan {
+    width: auto; /* Lebar tombol menyesuaikan teks di layar laptop */
+  }
+}
+
+
+
+
+
+
+/* ==========================================================
+   TAMBAHAN ATURAN FLEXBOX & RESPONSIF (MOBILE-FIRST & LAPTOP)
+   ========================================================== */
+
+/* 1. Atur Tampilan Dasar HP (Mobile-First): Header & Navigasi */
+header.navbar {
+  flex-direction: column; /* Flexbox: Menyusun logo dan navigasi ke bawah di layar HP */
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 16px;
+}
+
+nav.main-nav {
+  display: flex; /* Flexbox: Mengatur menu navigasi */
+  flex-wrap: wrap; /* Flexbox: Menu otomatis turun ke baris baru jika tidak muat */
+  gap: 6px;
+}
+
+/* Sembunyikan profil user yang terlalu padat di layar HP kecil */
+.nav-user {
+  display: none; 
+}
+
+/* 2. Daftar Data & Kartu Produk (Flexbox: flex-wrap + gap) */
+.product-card-grid {
+  display: flex; /* Flexbox: Mengatur tata letak grid produk */
+  flex-wrap: wrap; /* Flexbox: Kartu berderet dan otomatis turun baris */
+  gap: 12px; /* Flexbox: Memberikan jarak antar kartu */
+}
+
+.product-card {
+  width: 100%; /* Responsif HP: 1 kartu memenuhi lebar layar */
+}
+
+/* Stat Cards & Grid Form di HP (Flexbox Column + Gap) */
+.stats-grid {
+  display: flex; /* Flexbox: Mengatur ringkasan statistik */
+  flex-direction: column; /* Flexbox: Disusun vertikal ke bawah */
+  gap: 12px;
+}
+
+.grid-2col {
+  display: flex; /* Flexbox: Mengatur tata letak 2 kolom */
+  flex-direction: column; /* Flexbox: Diubah menjadi vertikal (column + gap) untuk HP */
+  gap: 16px;
+}
+
+/* Tabel agar bisa digeser horizontal jika dibuka di layar HP */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table.data-table {
+  min-width: 650px; /* Mencegah tabel tertekan atau rusak di layar kecil */
+}
+
+
+/* ==========================================================
+   3. MEDIA QUERY UNTUK LAPTOP / DESKTOP (min-width: 768px)
+   ========================================================== */
+@media (min-width: 768px) {
+  
+  /* Header & Navigasi Laptop: Logo di kiri, Menu di kanan */
+  header.navbar {
+    flex-direction: row; /* Flexbox: Mengembalikan posisi horizontal */
+    justify-content: space-between; /* Flexbox: Logo di kiri, menu di kanan */
+    align-items: center;
+    padding: 12px 32px;
+  }
+
+  /* Munculkan kembali profil user di laptop */
+  .nav-user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* Statistik 3 Kolom di Laptop */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* Grid Form 2 Kolom berdampingan di Laptop */
+  .grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+  }
+
+  /* Kartu Produk Berjajar Rapi (2 kolom atau lebih) */
+  .product-card {
+    width: calc(50% - 6px);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Di layar desktop yang lebih besar, kartu produk bisa 4 kolom */
+  .product-card {
+    width: calc(25% - 9px);
+  }
+}

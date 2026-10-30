@@ -4,14 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KasirKu - Daftar Produk</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <!-- <link
       rel="stylesheet"
       href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
     /> -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- <script src="js/script.js"></script> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+      integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <header>
@@ -146,7 +151,7 @@
               <th>AKSI</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="table-produk-tbody">
             <tr>
               <td><input type="checkbox" /></td>
               <td>
@@ -205,6 +210,80 @@
         </table>
       </div>
     </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const tbody = document.querySelector("#table-produk-tbody");
+        const dataTersimpan =
+          JSON.parse(localStorage.getItem("dataFormProduk")) || [];
+
+        function tambahCell(tr, konten) {
+          const td = document.createElement("td");
+          if (typeof konten === "string") {
+            td.textContent = konten;
+          } else {
+            td.append(konten);
+          }
+          tr.append(td);
+        }
+
+        dataTersimpan.forEach((produk) => {
+          const tr = document.createElement("tr");
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          tambahCell(tr, checkbox);
+
+          // Nama Produk dan Kode Produk
+          const divNama = document.createElement("div");
+          divNama.innerHTML = `<strong>${produk.nm_produk}</strong><br /><small style="color:blue">SKU: ${produk.barcode_produk}</small>`;
+          tambahCell(tr, divNama);
+
+          const divKategori = document.createElement("div");
+          divKategori.innerHTML = `${produk.kategori_produk}<br /><small style="color:blue">${produk.satuan_produk} </small>`;
+          tambahCell(tr, divKategori);
+
+          const harga = Number(produk.harga_jual_produk || 0);
+          const strongHarga = document.createElement("strong");
+          strongHarga.textContent = `Rp ${harga.toLocaleString("id-ID")}`;
+          tambahCell(tr, strongHarga);
+
+          const strongStock = document.createElement("Strong");
+          strongStock.textContent = produk.stok_awal_produk || 0;
+          tambahCell(tr, strongStock);
+
+          const badge = document.createElement("span");
+          badge.className = "badge badge-success";
+          badge.textContent = "● Tersedia";
+          tambahCell(tr, badge);
+
+          const divAksi = document.createElement("div");
+          divAksi.innerHTML = `<button class = "btn-remove" data-id="${produk.id}" style="background-color: rgb(247, 35, 35); padding: 10px; border-radius: 8px; color: #fee2e2; border: none;"><i class="bi bi-x-circle-fill"></i> Delete</button>`;
+          tambahCell(tr, divAksi);
+
+          tbody.append(tr);
+        });
+
+        tbody.addEventListener("click", function (e) {
+          const target = e.target.closest(".btn-remove");
+          if (target) {
+            const idData = Number(target.getAttribute("data-id"));
+
+            if (confirm("Apakah Anda yakin ingin menghapus produk ini?")) {
+              let dataAktif =
+                JSON.parse(localStorage.getItem("dataFormProduk")) || [];
+
+              dataAktif = dataAktif.filter(
+                (produk) => Number(produk.id) !== idData,
+              );
+
+              localStorage.setItem("dataFormProduk", JSON.stringify(dataAktif));
+
+              target.closest("tr").remove();
+            }
+          }
+        });
+      });
+    </script>
 
     <footer>
       <div>KasirKu POS Warung • Versi 2.4.0 (Kilat Retail UMKM)</div>

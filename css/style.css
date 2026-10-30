@@ -1,69 +1,37 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --warna-utama: #ffc61a; /* Kuning Emas KasirKu */
-  --warna-utama-hover: #e0ac13; /* Kuning Gelap Hover */
-  --warna-latar: #f4f5f8; /* Soft Gray Background */
-  --warna-kartu: #ffffff; /* White Card */
-  --warna-teks: #1e293b; /* Dark Slate Text */
-  --warna-teks-muted: #64748b; /* Muted Slate Text */
-  --warna-border: #e2e8f0; /* Light Border */
-  --warna-sukses: #10b981; /* Hijau Tersedia */
-  --warna-warning: #f59e0b; /* Kuning Peringatan */
-  --warna-danger: #ef4444; /* Merah Alert/Habis */
-
-  --font-utama: "Inter", system-ui, -apple-system, sans-serif;
-  --radius: 8px;
-  --radius-lg: 12px;
-  --bayangan: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-}
-
 body {
-  font-family: var(--font-utama);
-  background-color: var(--warna-latar);
-  color: var(--warna-teks);
-  line-height: 1.5;
-  font-size: 14px;
+  margin: 0;
   min-height: 100vh;
+  line-height: 1.5;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  font-size: 14px;
+  color: black;
+  background-color: #f4f5f8;
   display: flex;
   flex-direction: column;
 }
 
-h1 {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--warna-teks);
-}
-h2 {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--warna-teks);
-}
-h3 {
-  font-size: 15px;
-  font-weight: 600;
-}
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 header {
-  background-color: #ffffff;
-  border-bottom: 1px solid var(--warna-border);
+  background-color: white;
+  border-bottom: 1px solid rgb(158, 155, 155);
   padding: 12px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
-
 .brand {
   display: flex;
   align-items: center;
@@ -80,22 +48,20 @@ header {
   border-radius: 20px;
   font-weight: 600;
 }
-
-nav.main-nav {
+.main-nav {
   display: flex;
   gap: 8px;
 }
-
-nav.main-nav a {
+.main-nav a {
   padding: 8px 16px;
-  border-radius: var(--radius);
+  border-radius: 8px;
   font-weight: 500;
-  transition: background-color 0.2s;
-  text-decoration:none;
+  transition: #f4f5f8 0.2s;
+  text-decoration: none;
 }
 
-nav.main-nav a.active {
-  background-color: var(--warna-utama);
+.main-nav a.active {
+  background-color: #ffc61a;
   font-weight: 700;
 }
 
@@ -104,7 +70,6 @@ nav.main-nav a.active {
   align-items: center;
   gap: 16px;
 }
-
 .user-profile {
   display: flex;
   align-items: center;
@@ -118,68 +83,11 @@ nav.main-nav a.active {
   object-fit: cover;
 }
 
-label {
-  display: block;
-  font-weight: 600;
-  font-size: 13px;
-  margin-bottom: 6px;
-  color: var(--warna-teks);
-}
-
-input[type="text"],
-input[type="number"],
-select {
-  width: 100%;
-  padding: 10px 14px;
-  border: 1px solid var(--warna-border);
-  border-radius: var(--radius);
-  background-color: #ffffff;
-  font-family: var(--font-utama);
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-input:focus,
-select:focus {
-  border-color: var(--warna-utama);
-}
-
-.btn-primary {
-  background-color: var(--warna-utama);
-  color: #000000;
-  font-weight: 700;
-  padding: 10px 20px;
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: background-color 0.2s;
-}
-
-.btn-primary:hover {
-  background-color: var(--warna-utama-hover);
-}
-
-.btn-secondary {
-  background-color: #ffffff;
-  border: 1px solid var(--warna-border);
-  color: var(--warna-teks);
-  padding: 10px 20px;
-  border-radius: var(--radius);
-  font-weight: 600;
-  cursor: pointer;
-}
-
-main.container {
-  max-width: 1280px;
-  width: 100%;
+main {
+  max-width: 12;
   margin: 24px auto;
   padding: 0 24px;
-  flex: 1;
+  width: 100%;
 }
 
 .page-header {
@@ -191,118 +99,59 @@ main.container {
 
 .sub-breadcrumb {
   font-size: 12px;
-  color: var(--warna-teks-muted);
   margin-bottom: 4px;
   font-weight: 600;
   text-transform: uppercase;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.stat-card {
-  background: var(--warna-kartu);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  border: 1px solid var(--warna-border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: var(--bayangan);
-}
-
-.stat-number {
-  font-size: 28px;
-  font-weight: 800;
-}
-
-.stat-icon-bg {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius);
-  background-color: #f1f5f9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
-
-.table-container {
-  background: var(--warna-kartu);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--warna-border);
-  overflow: hidden;
-  box-shadow: var(--bayangan);
-}
-
-table.data-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-table.data-table th {
-  background-color: #f8fafc;
-  padding: 12px 16px;
-  text-align: left;
-  font-size: 11px;
-  text-transform: uppercase;
-  color: var(--warna-teks-muted);
-  font-weight: 700;
-  border-bottom: 1px solid var(--warna-border);
-}
-
-table.data-table td {
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--warna-border);
-  vertical-align: middle;
-}
-
-.badge {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: 700;
-}
-.badge-success {
-  background-color: #d1fae5;
-  color: #065f46;
-}
-.badge-warning {
-  background-color: #fef3c7;
-  color: #92400e;
-}
-.badge-danger {
-  background-color: #fee2e2;
-  color: #991b1b;
+  color: #64748b;
 }
 
 .grid-2col {
-  display: grid;
-  grid-template-columns: 1fr 380px;
+  display: flex;
   gap: 24px;
+  grid-template-columns: 1fr 388px;
 }
 
-.product-card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 16px;
+.btn-primary {
+  background-color: #ffc61a;
+  padding: 10px 20px;
+  font-weight: 700;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  background-color: #e6b800;
+}
+
+.btn-secondary {
+  background-color: #f4f5f8;
+  padding: 10px 20px;
+  font-weight: 700;
+  color: #000;
+  /* border:none; */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  gap: 8px;
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
 }
 
 .product-card {
-  background: var(--warna-kartu);
-  border: 1px solid var(--warna-border);
-  border-radius: var(--radius-lg);
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--bayangan);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: relative;
 }
 
-.product-card img {
+.product-card > img {
   width: 100%;
   height: 120px;
   object-fit: cover;
@@ -316,37 +165,51 @@ table.data-table td {
   position: absolute;
   top: 8px;
   left: 8px;
-  background: var(--warna-sukses);
-  color: white;
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-weight: 700;
+  background: #e6f4ea;
+  color: #137333;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
 }
-
 footer {
-  background: #ffffff;
-  border-top: 1px solid var(--warna-border);
+  background-color: white;
+  border-top: 1px solid rgb(158, 155, 155);
   padding: 16px 32px;
   font-size: 12px;
-  color: var(--warna-teks-muted);
+  color: #64748b;
   display: flex;
-  justify-content: space-between;
-  margin-top: auto;
 }
 
-/* ATURAN RESPONSIF (HP & TABLET / LAPTOP) */
+label {
+  font-size: 12px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: 1e293b;
+}
 
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  height: 25px;
+  border: 1px solid #262726;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 12px;
+}
+
+/* ukuran layar hp */
 @media (max-width: 767px) {
   header {
+    padding: 12px 32px;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-    padding: 12px 16px;
   }
 
   .main-nav {
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     gap: 6px;
   }
 
